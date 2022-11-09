@@ -10,8 +10,32 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_renderForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/renderForm */ "./src/modules/renderForm.js");
+/* harmony import */ var _modules_searchCode__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/searchCode */ "./src/modules/searchCode.js");
+
 
 (0,_modules_renderForm__WEBPACK_IMPORTED_MODULE_0__["default"])(); //Formos renderinimas
+(0,_modules_searchCode__WEBPACK_IMPORTED_MODULE_1__["default"])();
+
+/***/ }),
+
+/***/ "./src/modules/ajaxService.js":
+/*!************************************!*\
+  !*** ./src/modules/ajaxService.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var ajaxService = function ajaxService(term) {
+  var url = "https://api.postit.lt/?term=";
+  var key = "4U5x4QVHMIonl8TCYKcx";
+  return fetch("".concat(url).concat(term, "&key=").concat(key)).then(function (response) {
+    return response.json();
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ajaxService);
 
 /***/ }),
 
@@ -51,6 +75,41 @@ var renderForm = function renderForm() {
   document.querySelector('.container .card-body').appendChild(formElement);
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (renderForm);
+
+/***/ }),
+
+/***/ "./src/modules/searchCode.js":
+/*!***********************************!*\
+  !*** ./src/modules/searchCode.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ajaxService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ajaxService */ "./src/modules/ajaxService.js");
+
+var searchCode = function searchCode() {
+  document.querySelector('form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    var searchTerm = document.querySelector('.term').value;
+    //console.log(searchTerm);
+    var searchResponse;
+    (0,_ajaxService__WEBPACK_IMPORTED_MODULE_0__["default"])(searchTerm).then(function (result) {
+      return searchResponse = result;
+    }).then(function () {
+      return console.log(searchResponse);
+    }).then(function () {
+      if (searchResponse.data.length == 0) {
+        alert("Tokio adreso nera");
+      } else {
+        document.querySelector('.result').value = searchResponse.data[0].post_code;
+      }
+    });
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (searchCode);
 
 /***/ }),
 
