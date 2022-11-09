@@ -1,13 +1,56 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/app.js":
 /*!********************!*\
   !*** ./src/app.js ***!
   \********************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modules_renderForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/renderForm */ "./src/modules/renderForm.js");
 
+(0,_modules_renderForm__WEBPACK_IMPORTED_MODULE_0__["default"])(); //Formos renderinimas
+
+/***/ }),
+
+/***/ "./src/modules/form.js":
+/*!*****************************!*\
+  !*** ./src/modules/form.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var form = function form() {
+  return "\n    <div class=\"form-group mb-2\">\n        <input type=\"text\" placeholder=\"Adresas\" class=\"form-control term\">\n    </div>\n     <div class=\"form-group mb-2\">\n        <input type=\"text\" class=\"form-control result\" readonly>\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Ieskoti kodo</button>\n    ";
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (form);
+
+/***/ }),
+
+/***/ "./src/modules/renderForm.js":
+/*!***********************************!*\
+  !*** ./src/modules/renderForm.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./form */ "./src/modules/form.js");
+
+var renderForm = function renderForm() {
+  var formElement = document.createElement('form');
+  formElement.className = 'form-inline';
+  formElement.innerHTML = (0,_form__WEBPACK_IMPORTED_MODULE_0__["default"])();
+  document.querySelector('.container .card-body').appendChild(formElement);
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (renderForm);
 
 /***/ }),
 
@@ -17,7 +60,6 @@
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -83,6 +125,18 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
 /******/ 		};
 /******/ 	})();
 /******/ 	
